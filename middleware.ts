@@ -6,11 +6,13 @@ export default async function middleware(request: NextRequest) {
   // console.log(`request:`, request);
   const url = new URL(request.url);
   const searchParams = request.nextUrl.searchParams;
-  // console.log(`searchParams:`, searchParams);
   const code = searchParams.get('code');
-  // const code = 'code';
-  // console.log(`code:`, code);
-  const authRequest = new NextRequest(new URL(`http://localhost:3001/api/auth`, import.meta.url));
+  const baseUrl: string = `http://localhost:3001/api/auth`;
+  console.log(`baseUrl: ${baseUrl}`)
+
+  const authRequest = new NextRequest(new URL(baseUrl, import.meta.url));
+
+  // console.log()
   // console.log(`url:`, url);
   authRequest.headers.set('code', code as string);
   const authResponse = await fetch(authRequest);

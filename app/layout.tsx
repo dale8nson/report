@@ -3,13 +3,7 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
-import defaultTheme from '@mui/material/styles/defaultTheme';
-
-// const bcrypt = require('bcrypt');
-
-// import './globals.css'
-
-// const inter = Inter({ subsets: ['latin'] })
+import { createTheme } from '@mui/material';
 
 export const metadata: Metadata = {
   title: 'Report for Dr Tabur',
@@ -22,16 +16,22 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
+  const defaultTheme = createTheme();
+
   return (
+    <>
+    <CssBaseline />
+    <ThemeProvider theme={defaultTheme}>
     <html lang="en" className='scroll-smooth snap-align-none snap-none'>
-      <CssBaseline />
-      <ThemeProvider theme={defaultTheme}>
+
       <body className='font-sans bg-slate-100 text-black'>
         <article>
             {children}
         </article>
       </body>
-      </ThemeProvider>
+
     </html>
+    </ThemeProvider>
+    </>
   )
 }

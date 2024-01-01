@@ -1,17 +1,16 @@
-import { Suspense, createElement } from "react";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { ReactElement} from "react";
 import clientPromise from "@/lib/mongodb";
-import { Box, Paper, Skeleton, CircularProgress } from "@mui/material";
 import './globals.css';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
-import rehypeDocument from 'rehype-document';
-import rehypeFormat from 'rehype-format';
-import rehypeStringify from 'rehype-stringify';
+// import rehypeDocument from 'rehype-document';
+// import rehypeFormat from 'rehype-format';
+// import rehypeStringify from 'rehype-stringify';
+// @ts-expect-error
 import remarkHeadingId from 'remark-heading-id';
 import rehypeReact from "rehype-react";
-import rehypeParse from 'rehype-parse';
+// import rehypeParse from 'rehype-parse';
 import * as prod from 'react/jsx-runtime';
 import MDContents from "./MDContents";
 
@@ -25,7 +24,7 @@ const Page = async () => {
   // @ts-expect-error: the react types are missing.
   const options = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs }
 
-  const MarkDown = await unified()
+  const MarkDown: ReactElement = await unified()
     .use(remarkHeadingId, { defaults: true })
     .use(remarkParse)
 

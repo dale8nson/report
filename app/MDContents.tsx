@@ -3,7 +3,6 @@ import './globals.css';
 import { ReactElement, useEffect, useState, useMemo } from "react";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Link from "next/link";
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -12,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 
 
-const MDContents = ({ MDComponent }) => {
+const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
 
   const [index, setIndex] = useState(0);
   const [MarkDown, setMarkDown] = useState(<></>);
@@ -21,9 +20,9 @@ const MDContents = ({ MDComponent }) => {
   }, [MDComponent])
 
   const contents = useMemo(() => {
-    const contents: { [id: string]: { text: string, children: {}[] } } = {};
+    const contents: { [id: string]: { text: string, children: {id:string, text: string}[] } } = {};
     let h2 = null;
-    for (const el of MDComponent) {
+    for (const el of MDComponent as any) {
       if (el.type === 'h2') {
         h2 = el.props.id;
         contents[h2] = { text: el.props.children, children: [] };
@@ -39,7 +38,7 @@ const MDContents = ({ MDComponent }) => {
 
   }, [MDComponent]);
 
-  const onClickHandler = (e, id, i: number) => {
+  const onClickHandler = (e: any, id: string, i: number) => {
     console.log(`e:`, e);
     console.log(`setting index to ${i}`);
     setIndex(i);
@@ -90,16 +89,16 @@ const MDContents = ({ MDComponent }) => {
 
   return (
     <>
-      <Box sx={{ display: 'flex' }} >
-        <Box sx={{ position: 'fixed', width: '20%', height: '100dvh', overflow: 'scroll' }}>
+      <Box sx={{ display: 'flex', width:'100vw' }} >
+        <Box sx={{ position: 'fixed', width: '15%', height: '100dvh', overflow: 'scroll' }}>
           <List >
-            <Typography variant='h4' sx={{ml:2}}>
+            <Typography variant='h4' sx={{ml:2, fontWeight:'bold'}}>
               CONTENTS
             </Typography>
             {tableOfContents}
           </List>
         </Box>
-        <Box component='div' sx={{ width: '80%', ml: '20%' }}>
+        <Box component='div' sx={{ width: '85%', ml: '15%' }}>
           <Paper variant='elevation' elevation={2} sx={{ p: 16, m: 0}} >
             {MarkDown}
           </Paper>

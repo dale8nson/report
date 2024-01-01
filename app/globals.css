@@ -43,6 +43,10 @@ blockquote > p {
   @apply text-[1rem] text-slate-700 m-0;
 }
 
+blockquote ul > li {
+  @apply text-[0.9rem];
+}
+
 h2 {
   @apply text-3xl font-bold mb-2 !important;
 }
