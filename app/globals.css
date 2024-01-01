@@ -16,12 +16,14 @@
   }
 } */
 
+html, html * {
+  @apply scroll-smooth snap-align-none snap-none !important;
+  scroll-behavior: smooth !important;
+}
+
 h1 {
 
   @apply font-bold text-5xl mx-auto mb-10 text-center !important;
-  /* color: black;
-  margin-inline: auto;
-  width: 50%; */
 }
 
 h2 {
@@ -29,21 +31,36 @@ h2 {
 }
 
 h2 * {
-  @apply mx-6 !important;
+  @apply mx-2 !important;
 }
 
-
 blockquote {
+  @apply bg-slate-100 border-slate-100 border-2 border-solid p-2 w-full m-auto rounded-md;
+}
+
+blockquote > p {
   /* @apply w-10/12 mx-12 my-6 border-l-slate-300 border-solid border-l-4 rounded-sm p-2; */
-  @apply w-full my-8 mx-8 text-[0.25rem] text-slate-700;
+  @apply text-[1rem] text-slate-700 m-0;
 }
 
 h2 {
-  @apply text-2xl font-bold mb-2;
+  @apply text-3xl font-bold mb-2 !important;
 }
 
 h3 {
-  @apply font-bold text-xl;
+  @apply font-bold text-2xl my-2;
+}
+
+h3 > * {
+  @apply m-2;
+}
+
+h4 { 
+  @apply font-bold text-lg my-4;
+}
+
+h4 > * {
+  @apply m-2;
 }
 
 p {
@@ -51,9 +68,14 @@ p {
 }
 
 ul>li {
-  @apply list-item text-lg m-6 list-disc;
+  @apply list-item text-lg m-2 list-disc;
 }
 
 ol>li {
-  @apply list-item text-lg m-6 list-decimal;
+  @apply list-item text-lg ml-4 my-2 list-decimal;
 }
+
+p + ul {
+  @apply ml-4 my-1;
+}
+

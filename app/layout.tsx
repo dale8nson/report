@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
 
   return (
-    <html lang="en">
+    <html lang="en" className='scroll-smooth snap-align-none snap-none'>
       <CssBaseline />
       <ThemeProvider theme={defaultTheme}>
       <body className='font-sans bg-slate-100 text-black'>

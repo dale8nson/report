@@ -26,8 +26,9 @@ const Page = async () => {
   const options = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs }
 
   const MarkDown = await unified()
-    .use(remarkParse)
     .use(remarkHeadingId, { defaults: true })
+    .use(remarkParse)
+
     .use(remarkRehype)
     .use(rehypeReact, options)
     .process(md).then(md => md.result);
@@ -45,7 +46,7 @@ const Page = async () => {
   // console.log(`H3:`, H3);
 
   return (
-        <MDContents MDComponent={MarkDown} />
+    <MDContents key={crypto.randomUUID()} MDComponent={MarkDown} />
   );
 
 }
