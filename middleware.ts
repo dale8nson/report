@@ -8,7 +8,7 @@ export default async function middleware(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get('code');
 
-  const authRequest = new NextRequest(new URL('https://report-dale-hutchinsons-projects.vercel.app/api/auth', import.meta.url));
+  const authRequest = new NextRequest(new URL('/api/auth', request.url));
 
   // console.log()
   // console.log(`url:`, url);
