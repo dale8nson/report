@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import { createTheme } from '@mui/material';
+import defaultTheme from '@mui/material/styles/defaultTheme.js'
 
 export const metadata: Metadata = {
   title: 'Report for Dr Tabur',
@@ -16,7 +17,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const defaultTheme = createTheme();
 
   return (
     <>

@@ -10,7 +10,7 @@ export default async function middleware(request: NextRequest) {
   const baseUrl: string = `http://localhost:3001/api/auth`;
   console.log(`baseUrl: ${baseUrl}`)
 
-  const authRequest = new NextRequest(new URL(baseUrl, import.meta.url));
+  const authRequest = new NextRequest(new URL('http://localhost:3001/api/auth', import.meta.url));
 
   // console.log()
   // console.log(`url:`, url);
