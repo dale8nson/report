@@ -9,7 +9,7 @@ export default async function middleware(request: NextRequest) {
   const url = new URL(request.url);
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get('code');
-
+  if(!!code) {
   const authRequest = new NextRequest(new URL('/api/auth', request.url));
 
   // console.log()
@@ -28,6 +28,7 @@ export default async function middleware(request: NextRequest) {
   if (json.valid === true) {
     return fetch(url);
   }
+}
   return NextResponse.redirect(new URL('/invalid-code', request.url));
 } catch(e: any) {
   console.log(new Error(e));
