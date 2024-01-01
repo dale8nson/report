@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 
 export default async function middleware(request: NextRequest) {
+  console.log(`middleware called`);
 
   try {
   // console.log(`request:`, request);
@@ -18,12 +19,6 @@ export default async function middleware(request: NextRequest) {
   const authResponse = await fetch(authRequest);
   const json = await authResponse.json();
   console.log(`authResponse:`, json);
-
-  // const db = client.db('report');
-  // const password = db.collection('password');
-
-  // url.pathname = '/';
-  // console.log(`return fetch(url);`);
 
   if (json.valid === true) {
     return fetch(url);
