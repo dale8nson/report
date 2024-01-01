@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 
 export default async function middleware(request: NextRequest) {
+
+  try {
   // console.log(`request:`, request);
   const url = new URL(request.url);
   const searchParams = request.nextUrl.searchParams;
@@ -22,10 +24,14 @@ export default async function middleware(request: NextRequest) {
 
   // url.pathname = '/';
   // console.log(`return fetch(url);`);
+
   if (json.valid === true) {
     return fetch(url);
   }
   return NextResponse.redirect(new URL('/invalid-code', request.url));
+} catch(e: any) {
+  console.log(new Error(e));
+}
 }
 
 export const config = {

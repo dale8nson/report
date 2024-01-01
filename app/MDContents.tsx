@@ -67,7 +67,7 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
 
       subHeadings.push((
         <ListItem key={crypto.randomUUID()} sx={{ m: 0, p: 0 }} >
-          <ListItemButton selected={index === tocKeys.indexOf(subHeading.id)} onClick={(e) => onClickHandler(e, subHeading.id, tocKeys.indexOf(subHeading.id))} sx={{ pl: 4, py: 0, m: 0, fontSize:'1rem' }} >
+          <ListItemButton key={crypto.randomUUID()} selected={index === tocKeys.indexOf(subHeading.id)} onClick={(e) => onClickHandler(e, subHeading.id, tocKeys.indexOf(subHeading.id))} sx={{ pl: 4, py: 0, m: 0, fontSize:'1rem' }} >
             <ListItemText primary={subHeading.text} primaryTypographyProps={{variant:'body2'}} />
           </ListItemButton>
         </ListItem>
@@ -77,7 +77,7 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
     return (
       <>
         <ListItem key={crypto.randomUUID()} sx={{ m: 0, p: 0 }} >
-          <ListItemButton selected={index === tocKeys.indexOf(heading)} onClick={(e) => onClickHandler(e, heading, tocKeys.indexOf(heading))} sx={{ m: 0, px: 2 }} >
+          <ListItemButton key={crypto.randomUUID()} selected={index === tocKeys.indexOf(heading)} onClick={(e) => onClickHandler(e, heading, tocKeys.indexOf(heading))} sx={{ m: 0, px: 2 }} >
             <ListItemText primary={contents[heading].text} primaryTypographyProps={{variant:'button'}} />
           </ListItemButton>
         </ListItem>
