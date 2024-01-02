@@ -28,5 +28,3 @@ export const GET = async (req: Request) => {
 export const POST = (request: NextRequest) =>{
   return fetch(request.nextUrl);
 }
-
-// export const dynamic = 'force-dynamic';

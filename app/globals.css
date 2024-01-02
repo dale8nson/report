@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
 html, html * {
   @apply scroll-smooth snap-align-none snap-none !important;
   scroll-behavior: smooth !important;
@@ -27,7 +13,7 @@ h1 {
 }
 
 h2 {
-  @apply text-2xl !important;
+  @apply text-3xl pb-6 pt-6 font-bold !important;
 }
 
 h2 * {
@@ -35,7 +21,7 @@ h2 * {
 }
 
 blockquote {
-  @apply bg-slate-100 border-slate-100 border-2 border-solid p-2 w-full m-auto rounded-md;
+  @apply bg-slate-100 border-slate-100 border-2 border-solid p-2 w-full my-auto rounded-md;
 }
 
 blockquote > p {
@@ -47,24 +33,36 @@ blockquote ul > li {
   @apply text-[0.9rem];
 }
 
-h2 {
-  @apply text-3xl font-bold mb-2 !important;
+blockquote + p {
+  @apply mt-4;
 }
 
+/* h2 {
+  @apply text-3xl font-bold mb-2 !important;
+} */
+
 h3 {
-  @apply font-bold text-2xl my-2;
+  @apply font-bold text-2xl my-4;
 }
 
 h3 > * {
   @apply m-2;
 }
 
+h2 + h3 {
+  @apply -mt-1;
+}
+
 h4 { 
-  @apply font-bold text-lg my-4;
+  @apply font-bold text-lg my-4 ml-4;
 }
 
 h4 > * {
   @apply m-2;
+}
+
+h4 + ul {
+  @apply ml-4;
 }
 
 p {
@@ -83,3 +81,6 @@ p + ul {
   @apply ml-4 my-1;
 }
 
+ul + p {
+  @apply mt-4;
+}

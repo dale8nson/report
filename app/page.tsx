@@ -4,13 +4,9 @@ import './globals.css';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
-// import rehypeDocument from 'rehype-document';
-// import rehypeFormat from 'rehype-format';
-// import rehypeStringify from 'rehype-stringify';
 // @ts-expect-error
 import remarkHeadingId from 'remark-heading-id';
 import rehypeReact from "rehype-react";
-// import rehypeParse from 'rehype-parse';
 import * as prod from 'react/jsx-runtime';
 import MDContents from "./MDContents";
 import CircularProgress  from "@mui/material/CircularProgress";
@@ -32,19 +28,7 @@ const Page = async () => {
     .use(remarkRehype)
     .use(rehypeReact, options)
     .process(md).then(md => md.result);
-
-  console.log(`MarkDown:`, MarkDown);
-
-  // console.log(`md:`, md);
-
-  // const H2 = md.match(/^#{2}\s.+$/mg);
-
-  // console.log(`H2:`, H2);
-
-  // const H3 = md.match(/^#{3}\s.+$/mg);
-
-  // console.log(`H3:`, H3);
-
+  
   return (
     <Suspense fallback={<CircularProgress />}>
       <MDContents key={crypto.randomUUID()} MDComponent={MarkDown} />
