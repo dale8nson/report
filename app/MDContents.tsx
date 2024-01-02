@@ -1,6 +1,6 @@
 'use client';
 import './globals.css';
-import { ReactElement, useEffect, useState, useMemo } from "react";
+import { ReactElement, useEffect, useState, useMemo, Suspense } from "react";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -8,6 +8,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -68,7 +69,7 @@ const MDContents = ({ MDComponent }: { MDComponent: ReactElement }) => {
       subHeadings.push((
         <ListItem key={crypto.randomUUID()} sx={{ m: 0, p: 0 }} >
           <ListItemButton key={crypto.randomUUID()} selected={index === tocKeys.indexOf(subHeading.id)} onClick={(e) => onClickHandler(e, subHeading.id, tocKeys.indexOf(subHeading.id))} sx={{ pl: 4, py: 0, m: 0, fontSize: '1rem' }} >
-            <ListItemText primary={subHeading.text} primaryTypographyProps={{ variant: 'body2' }} />
+            <ListItemText key={crypto.randomUUID()} primary={subHeading.text} primaryTypographyProps={{ variant: 'body2' }} />
           </ListItemButton>
         </ListItem>
       ))
@@ -78,7 +79,7 @@ const MDContents = ({ MDComponent }: { MDComponent: ReactElement }) => {
       <>
         <ListItem key={crypto.randomUUID()} sx={{ m: 0, p: 0 }} >
           <ListItemButton key={crypto.randomUUID()} selected={index === tocKeys.indexOf(heading)} onClick={(e) => onClickHandler(e, heading, tocKeys.indexOf(heading))} sx={{ m: 0, px: 2 }} >
-            <ListItemText primary={contents[heading].text} primaryTypographyProps={{ variant: 'button' }} />
+            <ListItemText key={crypto.randomUUID()} primary={contents[heading].text} primaryTypographyProps={{ variant: 'button' }} />
           </ListItemButton>
         </ListItem>
         {subHeadings}
@@ -106,12 +107,16 @@ const MDContents = ({ MDComponent }: { MDComponent: ReactElement }) => {
         <Box component='div' sx={{ '@media print': { width: '100%', ml: 0 }, width: '85%', ml: '15%' }}>
           <div id='top' />
           <Paper variant='elevation' elevation={2} sx={{ '@media print': { p: 8 }, p: 16, m: 0 }} >
-            {MarkDown}
+            {/* <Suspense fallback={<CircularProgress />}> */}
+              {MarkDown}
+            {/* </Suspense> */}
           </Paper>
         </Box>
       </Box>
     </>
   );
 }
+
+// export const dynamic = 'force-static';
 
 export default MDContents;

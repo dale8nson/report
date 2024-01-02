@@ -1,4 +1,4 @@
-import { ReactElement} from "react";
+import { ReactElement, Suspense } from "react";
 import clientPromise from "@/lib/mongodb";
 import './globals.css';
 import { unified } from 'unified';
@@ -13,6 +13,7 @@ import rehypeReact from "rehype-react";
 // import rehypeParse from 'rehype-parse';
 import * as prod from 'react/jsx-runtime';
 import MDContents from "./MDContents";
+import CircularProgress  from "@mui/material/CircularProgress";
 
 const Page = async () => {
   const client = await clientPromise;
@@ -45,7 +46,9 @@ const Page = async () => {
   // console.log(`H3:`, H3);
 
   return (
-    <MDContents key={crypto.randomUUID()} MDComponent={MarkDown} />
+    <Suspense fallback={<CircularProgress />}>
+      <MDContents key={crypto.randomUUID()} MDComponent={MarkDown} />
+    </Suspense>
   );
 
 }

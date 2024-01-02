@@ -21,7 +21,7 @@ export default async function middleware(request: NextRequest) {
       console.log(`authResponse:`, json);
 
       if (json.valid === true) {
-        return fetch(url, { cache: 'no-store' });
+        return fetch(url);
       }
     }
     return NextResponse.redirect(new URL('/invalid-code', request.url));
@@ -31,6 +31,6 @@ export default async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/:path'
+  matcher: ['/:path']
 }
 

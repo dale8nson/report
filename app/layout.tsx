@@ -1,4 +1,4 @@
-export const runtime = 'nodejs';
+// export const runtime = 'nodejs';
 import type { Metadata } from 'next'
 import { Suspense } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
