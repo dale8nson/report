@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 
 
-const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
+const MDContents = ({ MDComponent }: { MDComponent: ReactElement }) => {
 
   const [index, setIndex] = useState(0);
   const [MarkDown, setMarkDown] = useState(<></>);
@@ -20,7 +20,7 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
   }, [MDComponent])
 
   const contents = useMemo(() => {
-    const contents: { [id: string]: { text: string, children: {id:string, text: string}[] } } = {};
+    const contents: { [id: string]: { text: string, children: { id: string, text: string }[] } } = {};
     let h2 = null;
     for (const el of MDComponent as any) {
       if (el.type === 'h2') {
@@ -42,7 +42,7 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
     console.log(`e:`, e);
     console.log(`setting index to ${i}`);
     setIndex(i);
-    document.getElementById(id)?.scrollIntoView({ behavior:'auto',block:'start', inline:'nearest'});
+    document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'nearest' });
   }
   const tocKeys = useMemo(() => {
 
@@ -67,8 +67,8 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
 
       subHeadings.push((
         <ListItem key={crypto.randomUUID()} sx={{ m: 0, p: 0 }} >
-          <ListItemButton key={crypto.randomUUID()} selected={index === tocKeys.indexOf(subHeading.id)} onClick={(e) => onClickHandler(e, subHeading.id, tocKeys.indexOf(subHeading.id))} sx={{ pl: 4, py: 0, m: 0, fontSize:'1rem' }} >
-            <ListItemText primary={subHeading.text} primaryTypographyProps={{variant:'body2'}} />
+          <ListItemButton key={crypto.randomUUID()} selected={index === tocKeys.indexOf(subHeading.id)} onClick={(e) => onClickHandler(e, subHeading.id, tocKeys.indexOf(subHeading.id))} sx={{ pl: 4, py: 0, m: 0, fontSize: '1rem' }} >
+            <ListItemText primary={subHeading.text} primaryTypographyProps={{ variant: 'body2' }} />
           </ListItemButton>
         </ListItem>
       ))
@@ -78,7 +78,7 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
       <>
         <ListItem key={crypto.randomUUID()} sx={{ m: 0, p: 0 }} >
           <ListItemButton key={crypto.randomUUID()} selected={index === tocKeys.indexOf(heading)} onClick={(e) => onClickHandler(e, heading, tocKeys.indexOf(heading))} sx={{ m: 0, px: 2 }} >
-            <ListItemText primary={contents[heading].text} primaryTypographyProps={{variant:'button'}} />
+            <ListItemText primary={contents[heading].text} primaryTypographyProps={{ variant: 'button' }} />
           </ListItemButton>
         </ListItem>
         {subHeadings}
@@ -89,17 +89,23 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', width:'100vw' }} >
-        <Box sx={{ '@media print':{display:'none'}, position: 'fixed', width: '15%', height: '100dvh', overflow: 'scroll' }}>
+      <Box sx={{ display: 'flex', width: '100vw' }} >
+        <Box sx={{ '@media print': { display: 'none' }, position: 'fixed', width: '15%', height: '100dvh', overflow: 'scroll' }}>
           <List >
-            <Typography variant='h4' sx={{ml:2, fontWeight:'bold'}}>
+            <Typography variant='h4' sx={{ ml: 2, fontWeight: 'bold' }}>
               CONTENTS
             </Typography>
+            <ListItem key={crypto.randomUUID()} sx={{ m: 0, p: 0 }} >
+              <ListItemButton key={crypto.randomUUID()} selected={index === 1000} onClick={(e) => onClickHandler(e, 'top', 1000)} sx={{ m: 0, px: 2 }} >
+                <ListItemText primary={'Top'} primaryTypographyProps={{ variant: 'button' }} />
+              </ListItemButton>
+            </ListItem>
             {tableOfContents}
           </List>
         </Box>
-        <Box component='div' sx={{ width: '85%', ml: '15%' }}>
-          <Paper variant='elevation' elevation={2} sx={{ p: 16, m: 0}} >
+        <Box component='div' sx={{ '@media print': { width: '100%', ml: 0 }, width: '85%', ml: '15%' }}>
+          <div id='top' />
+          <Paper variant='elevation' elevation={2} sx={{ '@media print': { p: 8 }, p: 16, m: 0 }} >
             {MarkDown}
           </Paper>
         </Box>
