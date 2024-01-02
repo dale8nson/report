@@ -90,7 +90,7 @@ const MDContents = ({ MDComponent }:{ MDComponent:ReactElement }) => {
   return (
     <>
       <Box sx={{ display: 'flex', width:'100vw' }} >
-        <Box sx={{ position: 'fixed', width: '15%', height: '100dvh', overflow: 'scroll' }}>
+        <Box sx={{ '@media print':{display:'none'}, position: 'fixed', width: '15%', height: '100dvh', overflow: 'scroll' }}>
           <List >
             <Typography variant='h4' sx={{ml:2, fontWeight:'bold'}}>
               CONTENTS
