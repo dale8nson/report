@@ -87,6 +87,13 @@ ul + p {
 
 @media print {
 
+  html {
+    margin:0 !important;
+  }
+  body {
+    margin: 0 !important;
+  }
+
   h1, h2, h3, h4 {
     margin-block: 5px !important;
     padding-block: 0 !important;
