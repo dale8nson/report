@@ -84,3 +84,59 @@ p + ul {
 ul + p {
   @apply mt-4;
 }
+
+@media print {
+
+  h1, h2, h3, h4 {
+    margin-block: 5px !important;
+    padding-block: 0 !important;
+  }
+
+  h1 + *, h2 + *, h3 + *, h4 + * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  h1 {
+    font-size: 24px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  h3 {
+    font-size: 16px !important;
+  }
+
+  h4 {
+    font-size: 14px !important;
+  }
+
+  p {
+    font-size: 11px !important;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+
+  blockquote {
+    border: none !important;
+    background-color: #555 !important;
+    margin-left: 1cm;
+  }
+  blockquote > p {
+    font-size: 9px !important;
+    
+  }
+
+  ul > li {
+    font-size: 10px !important;
+    line-height: 150% !important;
+  }
+
+  p {
+    line-height: 150%;
+  }
+}

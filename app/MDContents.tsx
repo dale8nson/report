@@ -33,15 +33,11 @@ const MDContents = ({ MDComponent }: { MDComponent: ReactElement }) => {
       }
     }
 
-    console.log(`contents:`, contents);
-
     return contents;
 
   }, [MDComponent]);
 
   const onClickHandler = (e: any, id: string, i: number) => {
-    console.log(`e:`, e);
-    console.log(`setting index to ${i}`);
     setIndex(i);
     document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'nearest' });
   }
@@ -55,8 +51,6 @@ const MDContents = ({ MDComponent }: { MDComponent: ReactElement }) => {
         tocKeys.push(subHeading.id);
       }
     }
-
-    console.log(`tocKeys:`, tocKeys);
 
     return tocKeys;
 

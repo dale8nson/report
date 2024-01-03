@@ -10,10 +10,8 @@ export const GET = async (req: Request) => {
   const db = client.db('report');
   const password = db.collection('password');
   const document = await password.findOne({user:'barbur'});
-  console.log('hash:', document?.hash);
   const hash = document?.hash;
   const valid = await bcrypt.compare(code, hash);
-  console.log(`bcrypt.compare(code, hash):`, valid);
   const json = {valid:false};
   const sessions = db.collection('sessions');
   sessions.updateOne({user: 'barbur'}, {$set: { passwordValidated: "false"}});
